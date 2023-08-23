@@ -50,6 +50,7 @@ export const paymentVerification = catchAsyncError(async (req, res, next) => {
     return res.redirect(`${process.env.FRONTEND_URL}/paymentfail`);
 
   // database comes here
+
   await Payment.create({
     razorpay_signature,
     razorpay_payment_id,
@@ -71,6 +72,7 @@ export const getRazorPayKey = catchAsyncError(async (req, res, next) => {
     key: process.env.RAZORPAY_API_KEY,
   });
 });
+
 
 export const cancelSubscription = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.user._id);
